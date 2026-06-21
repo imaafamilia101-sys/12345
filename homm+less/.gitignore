@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+node_modules/
+*.log
+*.tmp
+*.bak
+.env
+.env.*
+raw_*.json
+products_raw.json
+products_slice*.json
+tilda-*.js
+home-original.html
