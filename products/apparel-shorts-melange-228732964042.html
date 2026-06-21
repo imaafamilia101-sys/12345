@@ -16,15 +16,19 @@
     <header class="site-header">
       <a class="brand" href="../index.html" aria-label="HOMME+LESS home">HOMME<span>+</span>LESS</a>
       <nav class="desktop-nav" aria-label="Каталог"><a class="" href="../index.html#catalog">СМОТРЕТЬ ВСЕ</a><a class="" href="../catalog.html?cat=bestseller">BESTSELLER</a><a class="" href="../catalog.html?cat=tshirts">ФУТБОЛКИ</a><a class="" href="../catalog.html?cat=hoodies">ХУДИ / ЗИПЫ</a><a class="" href="../catalog.html?cat=jackets">ВЕРХНЯЯ ОДЕЖДА</a><a class="" href="../catalog.html?cat=pants">ШТАНЫ / ДЖИНСЫ</a><a class="" href="../catalog.html?cat=accessories">АКСЕССУАРЫ</a></nav>
-      <button class="menu-toggle" type="button" aria-label="Открыть меню">MENU</button>
+      <div class="site-actions">
+        <button class="cart-trigger" type="button" data-cart-open>КОРЗИНА <span data-cart-count>0</span></button>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню">MENU</button>
+      </div>
     </header>
     <aside class="mobile-menu" aria-hidden="true">
       <button class="menu-close" type="button" aria-label="Закрыть меню">CLOSE</button>
+      <button class="mobile-cart-trigger" type="button" data-cart-open>КОРЗИНА <span data-cart-count>0</span></button>
       <a class="" href="../index.html#catalog">СМОТРЕТЬ ВСЕ</a><a class="" href="../catalog.html?cat=bestseller">BESTSELLER</a><a class="" href="../catalog.html?cat=tshirts">ФУТБОЛКИ</a><a class="" href="../catalog.html?cat=hoodies">ХУДИ / ЗИПЫ</a><a class="" href="../catalog.html?cat=jackets">ВЕРХНЯЯ ОДЕЖДА</a><a class="" href="../catalog.html?cat=pants">ШТАНЫ / ДЖИНСЫ</a><a class="" href="../catalog.html?cat=accessories">АКСЕССУАРЫ</a>
     </aside>
     
         <main class="product-page">
-          <a class="back-link" href="../catalog.html">в†ђ каталог</a>
+          <a class="back-link" href="../catalog.html">← каталог</a>
           <section class="product-detail">
             <div class="product-gallery">
               <img src="../assets/products/apparel-shorts-melange-228732964042/01.png" alt="APPAREL SHORTS MELANGE" loading="lazy">
@@ -33,17 +37,21 @@
               <p class="eyebrow">IN STOCK / HOMME+LESS</p>
               <h1>APPAREL SHORTS MELANGE</h1>
               <div class="price-row">
-                <strong>3 190 в‚Ѕ</strong>
+                <strong>3 190 ₽</strong>
                 
               </div>
               <div class="size-row">
                 <p>Размер</p>
-                <div><button>S</button><button>M</button><button>L</button><button>XL</button></div>
+                <div><button type="button" data-size="S" aria-pressed="true" class="selected">S</button><button type="button" data-size="M" aria-pressed="false" class="">M</button><button type="button" data-size="L" aria-pressed="false" class="">L</button><button type="button" data-size="XL" aria-pressed="false" class="">XL</button></div>
               </div>
-              <a class="button primary wide" href="https://hommeplusless.com/tproduct/1532079401-228732964042-apparel-shorts-melange" target="_blank" rel="noreferrer">Открыть оригинал</a>
-              <button class="button ghost wide" type="button">Добавить РІ концепт-корзину</button>
+              <button class="button primary wide add-to-cart" type="button"
+                data-add-to-cart
+                data-product-id="228732964042"
+                data-product-title="APPAREL SHORTS MELANGE"
+                data-product-price="3 190 ₽"
+                data-product-image="assets/products/apparel-shorts-melange-228732964042/01.png">В корзину</button>
               <div class="product-note">
-                <p>Фотографии и товарные данные перенесены СЃ текущего сайта HOMME+LESS РґР»СЏ концепта редизайна.</p>
+                <p>Фотографии и товарные данные перенесены с текущего сайта HOMME+LESS для концепта редизайна.</p>
                 <p>Описание отсутствует на исходной карточке.</p>
               </div>
             </aside>
@@ -63,7 +71,7 @@
         </span>
         <span class="product-meta">
           <strong>CULTURE PANTS BLACK</strong>
-          <span>8 990 в‚Ѕ</span>
+          <span>8 990 ₽</span>
         </span>
         <span class="status live">BUY NOW</span>
       </a>
@@ -77,7 +85,7 @@
         </span>
         <span class="product-meta">
           <strong>CULTURE PANTS BLUE</strong>
-          <span>8 990 в‚Ѕ</span>
+          <span>8 990 ₽</span>
         </span>
         <span class="status live">BUY NOW</span>
       </a>
@@ -91,7 +99,7 @@
         </span>
         <span class="product-meta">
           <strong>CULTURE PANTS GREY</strong>
-          <span>8 990 в‚Ѕ</span>
+          <span>8 990 ₽</span>
         </span>
         <span class="status live">BUY NOW</span>
       </a>
@@ -105,7 +113,7 @@
         </span>
         <span class="product-meta">
           <strong>DIAMOND PANTS BLACK</strong>
-          <span>10 890 в‚Ѕ</span>
+          <span>10 890 ₽</span>
         </span>
         <span class="status live">BUY NOW</span>
       </a>
@@ -118,7 +126,7 @@
     <footer class="site-footer">
       <div>
         <p class="eyebrow">MOSCOW / DIAMOND DUST</p>
-        <h2>Одежда, которая держит свет даже РІ черном.</h2>
+        <h2>Одежда, которая держит свет даже в черном.</h2>
       </div>
       <div class="footer-links">
         <a href="https://hommeplusless.com/" target="_blank" rel="noreferrer">Оригинальный сайт</a>

@@ -75,7 +75,7 @@ def build(root):
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
   <link rel="preload" as="image" href="{esc(image(hero, 1))}">
   <link rel="preload" as="image" href="{esc(image(hero, 0))}">
-  <link rel="stylesheet" href="assets/styles.css?v=20260620-fastshop1">
+  <link rel="stylesheet" href="assets/styles.css?v=20260621-cart2">
 </head>
 <body class="home-redesign intro-complete">
   <a class="skip-link" href="#main">К содержанию</a>
@@ -86,12 +86,13 @@ def build(root):
     <a class="lux-header__brand" href="index.html" aria-label="HOMME+LESS — главная">HOMME<span>+</span>LESS</a>
     <div class="lux-header__actions">
       <a href="catalog.html">SEARCH</a>
-      <a href="catalog.html?cat=bestseller">BAG <span>0</span></a>
+      <button type="button" data-cart-open>КОРЗИНА <span data-cart-count>0</span></button>
     </div>
   </header>
 
   <aside class="mobile-menu" aria-hidden="true">
     <button class="menu-close" type="button" aria-label="Закрыть меню">CLOSE</button>
+    <button class="mobile-cart-trigger" type="button" data-cart-open>КОРЗИНА <span data-cart-count>0</span></button>
     <a href="catalog.html">СМОТРЕТЬ ВСЕ</a>
     <a href="catalog.html?cat=bestseller">BESTSELLER</a>
     <a href="catalog.html?cat=tshirts">ФУТБОЛКИ</a>
@@ -140,7 +141,7 @@ def build(root):
       <header class="scene-heading reveal">
         <div><span>01</span><span>NEW DROP</span></div>
         <h2>DIAMOND<br>SYSTEM</h2>
-        <p>Не декор. Не принт. Световая поверхность, которая меняется вместе СЃ движением.</p>
+        <p>Не декор. Не принт. Световая поверхность, которая меняется вместе с движением.</p>
       </header>
       <div class="drop-grid">
         {card(drop[0], "drop-a")}
@@ -148,7 +149,7 @@ def build(root):
         {card(drop[2], "drop-c")}
         {card(drop[3], "drop-d")}
       </div>
-      <a class="text-link reveal" href="catalog.html">VIEW FULL DROP <span>в†—</span></a>
+      <a class="text-link reveal" href="catalog.html">VIEW FULL DROP <span>↗</span></a>
     </section>
 
     <section class="catalog-preview" id="catalog">
@@ -173,7 +174,7 @@ def build(root):
     <section class="lookbook-scene">
       <div class="lookbook-scene__intro reveal">
         <div><span>03</span><span>LOOKBOOK / MOSCOW</span></div>
-        <p>55.7558 N<br>37.6173 E</p>
+        <p>55.7558° N<br>37.6173° E</p>
       </div>
       <div class="lookbook-scene__canvas">
         <figure class="lookbook-shot lookbook-shot--main reveal">
@@ -188,7 +189,7 @@ def build(root):
         <h2 class="lookbook-scene__title">MOSCOW<br>AFTER DARK</h2>
         <p class="lookbook-scene__copy">Город выключает цвет.<br>Остаются силуэт, металл и точки света.</p>
       </div>
-      <a class="text-link text-link--lookbook" href="catalog.html?cat=bestseller">EXPLORE THE LOOKS <span>в†—</span></a>
+      <a class="text-link text-link--lookbook" href="catalog.html?cat=bestseller">EXPLORE THE LOOKS <span>↗</span></a>
     </section>
 
     <section class="stores-scene" id="stores">
@@ -198,13 +199,13 @@ def build(root):
       </header>
       <div class="store-list">
         <article class="store-row reveal">
-          <span>01</span><h3>ФЛАКОН</h3><p>Большая Новодмитровская ул., 36, стр. 1, вход 3</p><a href="https://yandex.ru/maps/?text=Большая%20Новодмитровская%2036" target="_blank" rel="noreferrer">MAP в†—</a>
+          <span>01</span><h3>ФЛАКОН</h3><p>Большая Новодмитровская ул., 36, стр. 1, вход 3</p><a href="https://yandex.ru/maps/?text=Большая%20Новодмитровская%2036" target="_blank" rel="noreferrer">MAP ↗</a>
         </article>
         <article class="store-row reveal">
-          <span>02</span><h3>АВИАПАРК</h3><p>Ходынский бульвар, 4, корнер Trend Island</p><a href="https://yandex.ru/maps/?text=РўР¦%20Авиапарк" target="_blank" rel="noreferrer">MAP в†—</a>
+          <span>02</span><h3>АВИАПАРК</h3><p>Ходынский бульвар, 4, корнер Trend Island</p><a href="https://yandex.ru/maps/?text=ТЦ%20Авиапарк" target="_blank" rel="noreferrer">MAP ↗</a>
         </article>
         <article class="store-row reveal">
-          <span>03</span><h3>ЕВРОПЕЙСКИЙ</h3><p>РїР». Киевского Вокзала, 2, этаж 2, Trend Island</p><a href="https://yandex.ru/maps/?text=РўР¦%20Европейский" target="_blank" rel="noreferrer">MAP в†—</a>
+          <span>03</span><h3>ЕВРОПЕЙСКИЙ</h3><p>пл. Киевского Вокзала, 2, этаж 2, Trend Island</p><a href="https://yandex.ru/maps/?text=ТЦ%20Европейский" target="_blank" rel="noreferrer">MAP ↗</a>
         </article>
       </div>
     </section>
@@ -217,9 +218,9 @@ def build(root):
       <div><p>SUPPORT</p><a href="https://hommeplusless.com/help#delivery" target="_blank" rel="noreferrer">Доставка</a><a href="https://hommeplusless.com/help#returns" target="_blank" rel="noreferrer">Возврат</a><a href="https://hommeplusless.com/help#contacts" target="_blank" rel="noreferrer">Контакты</a></div>
       <div><p>SOCIAL</p><a href="https://t.me/hmmls" target="_blank" rel="noreferrer">Telegram</a><a href="https://www.instagram.com/hommeplusless" target="_blank" rel="noreferrer">Instagram</a><a href="https://vk.com/hommeplusless" target="_blank" rel="noreferrer">VK</a></div>
     </div>
-    <div class="lux-footer__bottom"><span>В© 2026 HOMME+LESS CONCEPT</span><span>MOSCOW / RUSSIA</span><a href="#main">BACK TO TOP в†‘</a></div>
+    <div class="lux-footer__bottom"><span>© 2026 HOMME+LESS CONCEPT</span><span>MOSCOW / RUSSIA</span><a href="#main">BACK TO TOP ↑</a></div>
   </footer>
-  <script src="assets/app.js?v=20260620-fastshop1"></script>
+  <script src="assets/app.js?v=20260621-cart2"></script>
 </body>
 </html>"""
     (root / "index.html").write_text(document, encoding="utf-8")

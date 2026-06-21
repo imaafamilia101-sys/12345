@@ -33,7 +33,7 @@ def slugify(value: str, uid: str) -> str:
 
 def money(value: str) -> str:
     try:
-        return f"{int(float(str(value).replace(' ', ''))):,}".replace(",", " ") + " в‚Ѕ"
+        return f"{int(float(str(value).replace(' ', ''))):,}".replace(",", " ") + " ₽"
     except Exception:
         return str(value or "")
 
@@ -181,10 +181,14 @@ def header(active: str = "", prefix: str = "") -> str:
     <header class="site-header">
       <a class="brand" href="{prefix}index.html" aria-label="HOMME+LESS home">HOMME<span>+</span>LESS</a>
       <nav class="desktop-nav" aria-label="Каталог">{links}</nav>
-      <button class="menu-toggle" type="button" aria-label="Открыть меню">MENU</button>
+      <div class="site-actions">
+        <button class="cart-trigger" type="button" data-cart-open>КОРЗИНА <span data-cart-count>0</span></button>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню">MENU</button>
+      </div>
     </header>
     <aside class="mobile-menu" aria-hidden="true">
       <button class="menu-close" type="button" aria-label="Закрыть меню">CLOSE</button>
+      <button class="mobile-cart-trigger" type="button" data-cart-open>КОРЗИНА <span data-cart-count>0</span></button>
       {links}
     </aside>
     """
@@ -195,7 +199,7 @@ def footer() -> str:
     <footer class="site-footer">
       <div>
         <p class="eyebrow">MOSCOW / DIAMOND DUST</p>
-        <h2>Одежда, которая держит свет даже РІ черном.</h2>
+        <h2>Одежда, которая держит свет даже в черном.</h2>
       </div>
       <div class="footer-links">
         <a href="https://hommeplusless.com/" target="_blank" rel="noreferrer">Оригинальный сайт</a>
@@ -260,7 +264,7 @@ def build_index(products: list[dict]) -> None:
         <div class="hero-copy">
           <p class="eyebrow">HOMME+LESS / DIAMOND SYSTEM</p>
           <h1>BLACK SITE.<br>WHITE DIAMONDS.</h1>
-          <p>Редизайн каталога HOMME+LESS РІ эстетике clean brutal luxury: черная одежда, холодный свет, мерцающая diamond-РїС‹Р»СЊ.</p>
+          <p>Редизайн каталога HOMME+LESS в эстетике clean brutal luxury: черная одежда, холодный свет, мерцающая diamond-пыль.</p>
           <div class="hero-actions">
             <a class="button primary" href="#catalog">Смотреть коллекцию</a>
             <a class="button ghost" href="catalog.html?cat=bestseller">BESTSELLER</a>
@@ -333,14 +337,18 @@ def build_product_pages(products: list[dict]) -> None:
     lookup = {p["uid"]: p for p in products}
     for product in products:
         related = [p for p in products if p["uid"] != product["uid"] and set(p["categories"]) & set(product["categories"])][:4]
-        sizes = "".join(f"<button>{esc(size)}</button>" for size in product["sizes"]) or "<button>one size</button>"
+        product_sizes = product["sizes"] or ["ONE SIZE"]
+        sizes = "".join(
+            f'<button type="button" data-size="{esc(size)}" aria-pressed="{str(index == 0).lower()}" class="{"selected" if index == 0 else ""}">{esc(size)}</button>'
+            for index, size in enumerate(product_sizes)
+        )
         gallery = "".join(f'<img src="../{esc(img)}" alt="{esc(product["title"])}" loading="lazy">' for img in product["gallery"])
         hero_img = f"../{product['gallery'][0]}" if product["gallery"] else ""
         status = "IN STOCK"
         body = f"""
         {header(prefix="../")}
         <main class="product-page">
-          <a class="back-link" href="../catalog.html">в†ђ каталог</a>
+          <a class="back-link" href="../catalog.html">← каталог</a>
           <section class="product-detail">
             <div class="product-gallery">
               {gallery}
@@ -356,10 +364,14 @@ def build_product_pages(products: list[dict]) -> None:
                 <p>Размер</p>
                 <div>{sizes}</div>
               </div>
-              <a class="button primary wide" href="{esc(product['sourceUrl'])}" target="_blank" rel="noreferrer">Открыть оригинал</a>
-              <button class="button ghost wide" type="button">Добавить РІ концепт-корзину</button>
+              <button class="button primary wide add-to-cart" type="button"
+                data-add-to-cart
+                data-product-id="{esc(product['uid'])}"
+                data-product-title="{esc(product['title'])}"
+                data-product-price="{esc(product['price'])}"
+                data-product-image="{esc(product['gallery'][0] if product['gallery'] else '')}">В корзину</button>
               <div class="product-note">
-                <p>Фотографии и товарные данные перенесены СЃ текущего сайта HOMME+LESS РґР»СЏ концепта редизайна.</p>
+                <p>Фотографии и товарные данные перенесены с текущего сайта HOMME+LESS для концепта редизайна.</p>
                 <p>{esc(product['description']) or 'Описание отсутствует на исходной карточке.'}</p>
               </div>
             </aside>
